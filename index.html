@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <main>
+    <input type="text" name="" id="input">
+    <button onclick="Additem()">Add</button>
+    <p id="list"></p>
+  </main>
+  <script>
+
+    // function Additem(){
+    //   item.push(listnput);
+    // }
+    let Item = [];
+    function render() {
+      for (let x of Object.entries(Item)) {
+        let y = document.createElement("li");
+        y.textContent =x
+        console.log(y)
+      }
+    }
+    function Additem() {
+      let task = document.getElementById("input").value;
+      Item.push(task)
+      let value = Item;
+      document.getElementById("list").innerHTML = value ;
+      render();
+      input.value = "";
+    }
+
+
+  </script>
+</body>
+
+</html>

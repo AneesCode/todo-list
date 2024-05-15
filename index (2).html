@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <header>
+            <h1 class="heading">TO DO LIST</h1>
+            <div class="inner">
+                <label for="">Whats your task's</label>
+                <input type="text" id="input-item">
+                <button id="add-item">Add Task</button>
+            </div>
+        </header>
+        <div class="list-contaienr">
+            <ul aria-live="polite">
+                <li>make tea</li>
+                <li>swimming </li>
+            </ul>
+            <button id="remove-btn">remove</button>
+        </div>
+    </main>
+    <script>
+        const itemHeading = document.querySelector(".heading")
+        const addItem = document.getElementById("add-item")
+        const delbtn = document.getElementById("remove-btn")
+        addItem.addEventListener("click", () => {
+            const input = document.getElementById("input-item")
+            const list = document.querySelector("ul");
+            if (input.value == "") {
+                alert("dont enter");
+            }
+            else {
+                if (list.textContent.includes(input.value)) {
+
+                    itemHeading.innerText = `Dont enter this item\n "${input.value}"`;
+                    itemHeading.style.color = "red";
+                    input.value = "";
+                }
+                else {
+                    list.insertAdjacentHTML(
+                        'afterbegin',
+                        `<li> ${input.value} </li>`
+                    )
+
+                    itemHeading.innerText = `enter this item "${input.value}"`;
+                    itemHeading.style.color = "green";
+                    input.value = "";
+
+                }
+            }
+        });
+        delbtn.addEventListener("click",()=>{
+            const removeItem = document.querySelector("li:last-child")
+            const del =confirm("want to delete");
+            if(del){
+             removeItem.remove();
+            }
+            })
+
+
+    </script>
+</body>
+
+</html>
